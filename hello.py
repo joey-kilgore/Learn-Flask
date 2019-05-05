@@ -1,3 +1,4 @@
+import findLinks
 from flask import Flask
 app = Flask(__name__)
 
@@ -17,3 +18,9 @@ def show_user_profile(username):
 @app.route('/post/<int:post_id>')
 def show_post(post_id):
     return 'Post %d' % post_id
+
+@app.route('/search/<searchTxt>')
+def search(searchTxt):
+    print('finding links')
+    output = findLinks.getTitle(searchTxt)
+    return output
